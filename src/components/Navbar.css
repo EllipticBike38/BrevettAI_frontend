@@ -1,0 +1,38 @@
+.navbar {
+  grid-area: navbar;
+  width: 80%;
+  margin: 0 auto;
+  background-color: #ffcab0;
+}
+.toolbar {
+  display: flex;
+  justify-content: end;
+  min-height: 50px;
+  background-color: var(--palette_pink);
+}
+.toolbar button:focus {
+  outline: none;
+}
+button {
+  background-color: var(--palette_pink);
+  color: var(--palette_black);
+  min-width: 100px;
+  padding: 0.5em 1em;
+
+  border: none;
+  cursor: pointer;
+}
+button:hover {
+  background-color: var(--palette_pink_hover);
+  color: var(--palette_white); /* Aggiunge una patina scura sopra */
+}
+
+@media screen and (max-width: 1200px) {
+  .toolbar {
+    justify-content: space-between;
+  }
+  .toolbar button {
+    flex: 1;
+    min-width: none;
+  }
+}

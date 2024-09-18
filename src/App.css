@@ -1,8 +1,40 @@
 #root {
-  max-width: 1280px;
+  width: 100%;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+}
+.grid-container {
+  display: grid;
+  grid-template-areas:
+    "title title title title title title"
+    "navbar navbar navbar navbar navbar navbar"
+    "menu main main main right right"
+    "menu footer footer footer footer footer";
+  gap: 10px;
+  width: 100%;
+}
+.title {
+  grid-area: title;
+  color: var(--palette_black);
+}
+.navbar {
+  grid-area: navbar;
+  width: 80%;
+  margin: 0 auto;
+  background-color: #ffcab0;
+}
+.menu {
+  grid-area: menu;
+}
+.main {
+  grid-area: main;
+}
+.right {
+  grid-area: right;
+}
+.footer {
+  grid-area: footer;
 }
 
 .logo {
