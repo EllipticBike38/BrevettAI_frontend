@@ -1,0 +1,83 @@
+.authPage{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 40vw;
+    margin: auto;
+    background-color: #f5f5f5;
+}
+.choose{
+    flex:1;
+}
+
+.choose h1{
+
+    font-size: 2rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+    
+    content: "Accedi";
+    transition: content 0.5s;
+    cursor: pointer;
+}
+.form {
+    display: flex;
+    flex:1;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    height: 100%;
+    background-color: #f5f5f5;
+    border-radius: 10px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+
+    gap: 1rem;
+}
+
+.form input{
+    background-color: white;
+    width: 100%;
+    color: var(--palette_black);
+    resize: none;
+    border-radius: 10px;
+    font-size: 17px;
+    padding: 10px;
+    border-width: 2px;
+    border-color: var(--palette_black);
+    --speed: 0.2s;
+    transition: border-color var(--speed), box-shadow var(--speed);
+}
+
+.form input:focus{
+    outline: none;
+    border-width: 2px;
+    border-color: var(--palette_pink);
+    box-shadow: 2px 2px 5px var(--palette_pink_hover);
+}
+
+.form button{
+    width: 100%;
+    margin: 1rem;
+    padding: 0.5rem;
+    border: 0;
+    border-radius: 5px;
+    background-color: var(--palette_pink);
+    cursor: pointer;
+}
+
+.form button:hover{
+    background-color: var(--palette_pink_hover);
+}
+
+.form p{
+    font-size: 1rem;
+    color: var(--palette_black);
+    text-decoration: underline;
+}
+
+.form p:hover{
+    color: var(--palette_pink_hover);
+}

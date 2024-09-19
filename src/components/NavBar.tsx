@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
 import palette from "./palette";
 import "./Navbar.css";
 import { useNavigate } from "react-router-dom";
+import { ApiContext } from "../Router";
 
 interface NavBarProps {
   className?: string;
@@ -9,9 +10,12 @@ interface NavBarProps {
 
 const NavBar: React.FC<NavBarProps> = (props) => {
   console.log({ props });
+  const {token, setToken} = useContext(ApiContext);
 
   const navigate = useNavigate();
+
   return (
+    
     <div
       className={props.className}
       style={{
@@ -24,7 +28,14 @@ const NavBar: React.FC<NavBarProps> = (props) => {
         <button onClick={() => navigate("/chat")}>ChatBot</button>
         <button onClick={() => navigate("/patents")}>I miei Brevetti</button>
         <button onClick={() => navigate("/faq")}>FAQ</button>
-        <button onClick={() => navigate("/login")}>Login</button>
+        {!token ? <button onClick={() => navigate("/auth")}>Login</button>:
+        <button onClick={() => 
+          {
+            setToken("");
+            document.cookie = "token=";
+            navigate("/auth");
+          }
+        }>Logout</button>}
       </div>
     </div>
   );
