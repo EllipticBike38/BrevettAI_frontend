@@ -9,6 +9,7 @@
   justify-content: end;
   min-height: 50px;
   background-color: var(--palette_pink);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 .toolbar button:focus {
   outline: none;

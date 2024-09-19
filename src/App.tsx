@@ -1,15 +1,13 @@
+import { StrictMode } from "react";
 import "./App.css";
-
-import NavBar from "./components/NavBar";
+import Router from "./Router";
+import { RouterProvider } from "react-router-dom";
 
 function App() {
   return (
-    <>
-      <div className="grid-container">
-        <h1 className="title">[logo]</h1>
-        <NavBar className="navbar"></NavBar>
-      </div>
-    </>
+    <StrictMode>
+      <RouterProvider router={Router} />
+    </StrictMode>
   );
 }
 

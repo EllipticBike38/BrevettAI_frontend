@@ -1,6 +1,7 @@
 import React from "react";
 import palette from "./palette";
 import "./Navbar.css";
+import { useNavigate } from "react-router-dom";
 
 interface NavBarProps {
   className?: string;
@@ -8,6 +9,8 @@ interface NavBarProps {
 
 const NavBar: React.FC<NavBarProps> = (props) => {
   console.log({ props });
+
+  const navigate = useNavigate();
   return (
     <div
       className={props.className}
@@ -17,11 +20,11 @@ const NavBar: React.FC<NavBarProps> = (props) => {
       }}
     >
       <div className="toolbar">
-        <button>Home</button>
-        <button>ChatBot</button>
-        <button>I miei Brevetti</button>
-        <button>FAQ</button>
-        <button>Login</button>
+        <button onClick={() => navigate("/")}>Home</button>
+        <button onClick={() => navigate("/chat")}>ChatBot</button>
+        <button onClick={() => navigate("/patents")}>I miei Brevetti</button>
+        <button onClick={() => navigate("/faq")}>FAQ</button>
+        <button onClick={() => navigate("/login")}>Login</button>
       </div>
     </div>
   );

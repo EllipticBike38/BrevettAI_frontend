@@ -8,8 +8,11 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   --palette_green: #e0ffcd;
+  --palette_green_dark: #7db55b;
   --palette_yellow: #fdffcd;
+  --palette_yellow_dark: #cacd75;
   --palette_orange: #ffebbb;
+  --palette_orange_dark: #dab96c;
   --palette_pink: #ffcab0;
   --palette_pink_hover: #ae8a78;
   --palette_white: #fafafa;
