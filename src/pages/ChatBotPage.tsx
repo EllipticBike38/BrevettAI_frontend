@@ -1,4 +1,6 @@
+import { useEffect, useState } from "react";
 import "./ChatBotPage.css";
+import { IoMdSend } from "react-icons/io";
 
 type Message = {
   from: "me" | "bot";
@@ -16,32 +18,63 @@ const ChatBotPage = () => {
     "trova un'ambulanza",
   ];
 
-  const conversation: Message[] = [
+  const defaultConversation: Message[] = [
     {
       from: "me",
-      text: "Posso brevettare un attrezzo per la raccolta dei fichi d'india?",
+      text: "Ho un idea per un giocattolo in grado di sviluppare la fantasia e la capacità spaziale dei bambini tramite l'incastro reciproco di vari mattoncini di forme e dimensioni diverse ma in grado di incastrarsi perfettamente tra di loro formando un numero di strutture potenzialmente infinito, posso brevettare questa idea?",
     },
     {
       from: "bot",
-      text: "Nella provincia di Lecce esiste un brevetto per lo sficatore, un attrezzo creato proprio per la raccolta dei fichi d'india, quindi purtroppo non è possibile avvalersi di tale brevetto",
+      text: "La tua idea è molto simile a quella di Lego, un'azienda danese che ha brevettato questa idea nel 1982, attualmente il brevetto è ancora valido in Italia e Francia sebbene sia scaduto negli Stati Uniti, nel Regno Unito, in Spagna e in Germania.",
     },
     {
       from: "me",
-      text: "Ma il mio attrezzo funzionerebbe grazie all'alimentazione della batteria solare di Daitarn III, in questo modo la mia invenzione non potrebbe risultare abbastanza innovativa da meritarsi un brevetto?",
+      text: "Se sostituissi l'idea dei mattonicini incastrabili con dei magneti, permettendo dunque alle forme create di avere superfici molto più sinuose e realistiche?",
     },
     {
       from: "bot",
-      text: "Le mie ricerche non hanno prodotto risultati nella ricerca di un brevetto su un attrezzo per raccogliere i fichi d'india alimentato con la batteria solare di Daitarn III, è quindi possibile depositare un brevetto per questa invenzione.",
+      text: "Non risultano brevetti che corrispondano alla tua idea, dunque potresti depositare un documento all'ufficio brevetti.",
     },
     {
       from: "me",
-      text: "Posso chiamare la mia invenzione sficatore solare?",
+      text: "Posso chiamare la mia invenzione Meccano?",
     },
     {
       from: "bot",
-      text: 'Purtroppo la parola "sficatore" è già stata depositato all\'ufficio brevetti, ti consiglio di cercare un nome più originale per la tua invenzione, che ne diresti di "deficatore solare"',
+      text: 'Il nome "Meccano" corrisponde ad un prodotto già brevettato, dovresti scegliere un nome diverso per la tua invenzione.',
     },
   ];
+
+  const [message, setMessage] = useState<string>("");
+  const [conversation, setConversation] = useState<Message[]>([]);
+
+  useEffect(() => {
+    setConversation(defaultConversation);
+  }, []);
+
+  useEffect(() => {}, [conversation]);
+
+  const sendMessage = (text: string) => {
+    setConversation((state) => [
+      ...state,
+      {
+        from: "me",
+        text,
+      },
+    ]);
+    setMessage("");
+
+    setTimeout(() => {
+      console.log("response");
+      setConversation((state) => [
+        ...state,
+        {
+          from: "bot",
+          text: "Non posso rispondere ora",
+        },
+      ]);
+    }, 1000);
+  };
 
   return (
     <div className="chatbotPage">
@@ -53,12 +86,24 @@ const ChatBotPage = () => {
         ))}
       </div>
       <div className="chat">
-        {conversation.map((message) => (
-          <div className={"conversation-box " + message.from}>
+        {conversation.map((message, index) => (
+          <div key={index} className={"conversation-box " + message.from}>
             {message.text}
           </div>
         ))}
-        <textarea name="chatbox" className="chatbox" />
+        <div>
+          <textarea
+            name="chatbox"
+            className="chatbox"
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
+          />
+          <IoMdSend
+            className="icon send"
+            size={45}
+            onClick={() => sendMessage(message)}
+          />
+        </div>
       </div>
     </div>
   );

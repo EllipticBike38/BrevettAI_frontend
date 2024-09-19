@@ -6,6 +6,7 @@ import { Navigate, Outlet } from "react-router-dom";
 import logo from "./assets/logo.png";
 
 import NavBar from "./components/NavBar";
+import BrevettiPage from "./pages/BrevettiPage";
 
 export const ApiContext = React.createContext({});
 
@@ -43,6 +44,10 @@ const router = createBrowserRouter([
       {
         path: "/chat",
         element: <ChatBotPage />,
+      },
+      {
+        path: "/patents",
+        element: <BrevettiPage />,
       },
     ],
   },
